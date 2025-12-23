@@ -7,9 +7,16 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "roles")
-@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Role {
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

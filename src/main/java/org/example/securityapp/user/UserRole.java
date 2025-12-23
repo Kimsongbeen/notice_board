@@ -7,12 +7,23 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="user_roles")
-@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserRole {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Role getRole() {
+        return role;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
