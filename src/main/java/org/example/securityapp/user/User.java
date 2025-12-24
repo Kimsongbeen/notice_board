@@ -74,4 +74,9 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    public void addRole(Role role){
+        UserRole userRole = new UserRole(this, role);
+        userRoles.add(userRole);
+    }
 }

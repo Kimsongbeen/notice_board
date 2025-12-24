@@ -2,7 +2,6 @@ package org.example.securityapp.user;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity

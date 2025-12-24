@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### 설정파일
+application-prod.yml
+.env

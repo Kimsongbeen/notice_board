@@ -1,0 +1,13 @@
+로그인 요청
+ ↓
+UsernamePasswordAuthenticationFilter
+ ↓
+CustomAuthenticationProvider
+ ↓
+UserDetailsService (DB 조회)
+ ↓
+비밀번호 비교 / 상태 확인
+ ↓
+AuthenticationException 발생 or 성공
+ ↓
+FailureHandler / Success 처리
