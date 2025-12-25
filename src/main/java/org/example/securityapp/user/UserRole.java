@@ -1,13 +1,12 @@
 package org.example.securityapp.user;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="user_roles")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserRole {
+
+    protected UserRole() {}
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

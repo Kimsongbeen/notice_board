@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     @GetMapping("/hello")
-    public String admimHello() {
+    public String hello() {
         return "ADMIN 접근 성공";
     }
 }

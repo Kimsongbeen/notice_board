@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController
 {
 
-    @GetMapping
-    public String userHello(){
+    @GetMapping("/hello")
+    public String hello(){
         return "USER 접근 성공";
     }
 }

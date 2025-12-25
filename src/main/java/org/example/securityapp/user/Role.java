@@ -1,13 +1,12 @@
 package org.example.securityapp.user;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "roles")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Role {
+
+    protected Role(){}
 
     public Long getId() {
         return id;

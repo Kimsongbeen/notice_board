@@ -1,5 +1,8 @@
 package org.example.securityapp.security.userdetail;
 
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.example.securityapp.user.User;
 import org.example.securityapp.user.UserStatus;
@@ -7,18 +10,22 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Collection;
-
 public class CustomUserDetails implements UserDetails {
 
     private final User user;
 
+    private static final Logger log =
+            LoggerFactory.getLogger(CustomUserDetailsService.class);
+
     public CustomUserDetails(User user) {
+        log.info("CustomUserDetails 생성: {}", user.getUsername());
         this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.getUserRoles().stream()
+        return user.getUserRoles()
+                .stream()
                 .map(userRole -> userRole.getRole().getName())
                 .map(SimpleGrantedAuthority::new)
                 .toList();
