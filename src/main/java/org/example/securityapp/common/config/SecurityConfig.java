@@ -1,7 +1,6 @@
 package org.example.securityapp.common.config;
 
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import org.example.securityapp.auth.JwtProvider;
 import org.example.securityapp.security.auth.CustomAuthenticationProvider;
 import org.example.securityapp.security.auth.JwtAuthenticationFilter;
@@ -17,7 +16,9 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -49,13 +50,9 @@ public class SecurityConfig {
                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .formLogin(form -> form.disable())
                 .httpBasic(AbstractHttpConfigurer::disable)
-                .exceptionHandling(ex -> ex
-                        .authenticationEntryPoint(
-                                (request, response, autheException) ->{
-                                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                                }
-                        )
-
+                .exceptionHandling(e->e
+                        .authenticationEntryPoint(authenticationEntryPoint())
+                        .accessDeniedHandler(accessDeniedHandler())
                 )
                 .addFilterBefore(jwtFilter,
                         UsernamePasswordAuthenticationFilter.class)
@@ -87,6 +84,21 @@ public class SecurityConfig {
     ) throws Exception{
         return configuration.getAuthenticationManager();
     }
+
+    @Bean
+    AuthenticationEntryPoint authenticationEntryPoint(){
+        return(request, response, authException)->{
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+        };
+    }
+
+    @Bean
+    AccessDeniedHandler accessDeniedHandler() {
+        return (request, response, accessDeniedException) -> {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Forbidden");
+        };
+    }
+
 
 }
 

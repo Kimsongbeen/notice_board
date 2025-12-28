@@ -1,5 +1,7 @@
 package org.example.securityapp.security.auth;
 
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -50,22 +52,28 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        String header = request.getHeader("Authorization");
+        try{
+            String header = request.getHeader("Authorization");
 
-        if (header != null && header.startsWith("Bearer ")) {
-            String token = header.substring(7);
+            if (header != null && header.startsWith("Bearer ")) {
+                String token = header.substring(7);
 
-            if (jwtProvider.validateToken(token)) {
-                Authentication auth =
-                        jwtProvider.getAuthentication(token);
+                if (jwtProvider.validateToken(token)) {
+                    Authentication auth =
+                            jwtProvider.getAuthentication(token);
 
-                log.info("JWT AUTH principal = {}", auth.getPrincipal());
-                log.info("JWT AUTH authorities = {}", auth.getAuthorities());
-                SecurityContextHolder.getContext().
-                        setAuthentication(auth);
+                    log.info("JWT AUTH principal = {}", auth.getPrincipal());
+                    log.info("JWT AUTH authorities = {}", auth.getAuthorities());
+                    SecurityContextHolder.getContext().
+                            setAuthentication(auth);
+                }
             }
-        }
 
-        filterChain.doFilter(request, response);
+            filterChain.doFilter(request, response);
+        } catch (ExpiredJwtException e) {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token expired");
+        }catch (JwtException e){
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid token");
+        }
     }
 }

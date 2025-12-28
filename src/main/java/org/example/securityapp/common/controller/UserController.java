@@ -1,5 +1,7 @@
 package org.example.securityapp.common.controller;
 
+import org.example.securityapp.security.userdetail.CustomUserDetails;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController
 {
-
-    @GetMapping("/hello")
-    public String hello(){
-        return "USER 접근 성공";
+    @GetMapping("/me")
+    public String me(@AuthenticationPrincipal CustomUserDetails userDetails)
+    {
+        return userDetails.getUsername();
     }
 }
