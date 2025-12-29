@@ -1,4 +1,4 @@
-package org.example.securityapp;
+package org.example.securityapp.jwt;
 
 import org.example.securityapp.auth.JwtProvider;
 import org.junit.jupiter.api.DisplayName;

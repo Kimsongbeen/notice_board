@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -79,6 +80,33 @@ public class JwtProvider {
         return new UsernamePasswordAuthenticationToken(
                 userDetails,
                 null,
+                authorities
+        );
+    }
+
+    public String createRefreshToken(UserDetails userDetails) {
+        return Jwts.builder()
+                .setSubject(userDetails.getUsername())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(getSignKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public String getSubject(String token){
+        return parseClaims(token).getSubject();
+    }
+
+    public UserDetails getUserDetails(String token){
+        Claims claims = parseClaims(token);
+        List<SimpleGrantedAuthority> authorities =
+                ((List<?>) claims.get("roles")).stream()
+                        .map(role -> new SimpleGrantedAuthority(role.toString()))
+                        .toList();
+
+        return new User(
+                claims.getSubject(),
+                "",
                 authorities
         );
     }

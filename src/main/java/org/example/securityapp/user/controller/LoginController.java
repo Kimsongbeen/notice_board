@@ -1,4 +1,4 @@
-package org.example.securityapp.common.controller;
+package org.example.securityapp.user.controller;
 
 import org.example.securityapp.auth.JwtProvider;
 import org.example.securityapp.auth.LoginRequest;

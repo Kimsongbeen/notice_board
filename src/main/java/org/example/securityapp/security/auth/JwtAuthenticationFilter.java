@@ -33,8 +33,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return request.getRequestURI().equals("/login")
-                || request.getRequestURI().startsWith("/h2");
+        String path = request.getRequestURI();
+        log.info("shouldNotFilter called: {}", request.getRequestURI());
+        return path.equals("/login")
+                || path.equals("/auth/logout") || path.equals("/auth/reissue");
     }
 
 

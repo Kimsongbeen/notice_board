@@ -1,4 +1,4 @@
-package org.example.securityapp.security.userdetail;
+package org.example.securityapp.security.principal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

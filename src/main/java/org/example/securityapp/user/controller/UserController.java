@@ -1,6 +1,6 @@
-package org.example.securityapp.common.controller;
+package org.example.securityapp.user.controller;
 
-import org.example.securityapp.security.userdetail.CustomUserDetails;
+import org.example.securityapp.security.principal.CustomUserDetails;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,5 @@
-package org.example.securityapp.security.userdetail;
+package org.example.securityapp.security.principal;
 
-import lombok.extern.slf4j.Slf4j;
 import org.example.securityapp.user.User;
 import org.example.securityapp.user.repository.UserRepository;
 import org.slf4j.Logger;

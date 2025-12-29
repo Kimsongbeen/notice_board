@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: securityapp-test
+
+  profiles:
+    active: test
+
+  # ===============================
+  # Redis (테스트용)
+  # ===============================
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  # ===============================
+  # Security
+  # ===============================
+  security:
+    user:
+      name: test
+      password: test
+
+  # ===============================
+  # Jackson (테스트 안정화)
+  # ===============================
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+# ===============================
+# Logging (디버깅용)
+# ===============================
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.example.securityapp: DEBUG

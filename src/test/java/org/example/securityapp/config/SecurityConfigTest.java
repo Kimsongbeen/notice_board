@@ -1,4 +1,4 @@
-package org.example.securityapp;
+package org.example.securityapp.config;
 
 import org.example.securityapp.security.auth.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
