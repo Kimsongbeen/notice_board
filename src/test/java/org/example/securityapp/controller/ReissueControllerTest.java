@@ -6,20 +6,21 @@ import org.example.securityapp.user.service.RefreshTokenService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
-
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
-import static org.springframework.http.RequestEntity.post;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@AutoConfigureMockMvc(addFilters = false)
 @WebMvcTest(ReissueController.class)
 class ReissueControllerTest {
 
@@ -55,7 +56,8 @@ class ReissueControllerTest {
                 .willReturn("new-refresh-token");
 
         mockMvc.perform(
-                        (RequestBuilder) post("/auth/reissue")
+                        post("/auth/reissue")
+                                .with(csrf())
                                 .header("Authorization", "Bearer refresh-token")
                 )
                 .andExpect(status().isOk())
@@ -68,8 +70,9 @@ class ReissueControllerTest {
     @Test
     @DisplayName("Refresh Token 없으면 401")
     void reissue_fail_no_token() throws Exception {
-        mockMvc.perform((RequestBuilder) post("/auth/reissue"))
-                .andExpect(status().isUnauthorized());
+        mockMvc.perform(post("/auth/reissue")
+                        .with(csrf()))
+                .andExpect(status().isBadRequest());
     }
 }
 
