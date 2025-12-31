@@ -1,8 +1,8 @@
 package org.example.securityapp.controller;
 
-import org.example.securityapp.auth.JwtProvider;
-import org.example.securityapp.user.controller.ReissueController;
-import org.example.securityapp.user.service.RefreshTokenService;
+import org.example.securityapp.security.jwt.JwtProvider;
+import org.example.securityapp.auth.controller.ReissueController;
+import org.example.securityapp.auth.service.RefreshTokenService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

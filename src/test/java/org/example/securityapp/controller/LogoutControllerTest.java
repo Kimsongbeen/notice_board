@@ -1,16 +1,12 @@
 package org.example.securityapp.controller;
 
-import org.example.securityapp.auth.JwtProvider;
-import org.example.securityapp.common.config.SecurityConfig;
-import org.example.securityapp.user.controller.LogoutController;
-import org.example.securityapp.user.service.RefreshTokenService;
+import org.example.securityapp.security.jwt.JwtProvider;
+import org.example.securityapp.auth.service.RefreshTokenService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
-import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 

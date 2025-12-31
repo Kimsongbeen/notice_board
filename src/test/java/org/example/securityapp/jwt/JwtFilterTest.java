@@ -1,6 +1,6 @@
 package org.example.securityapp.jwt;
 
-import org.example.securityapp.auth.JwtProvider;
+import org.example.securityapp.security.jwt.JwtProvider;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

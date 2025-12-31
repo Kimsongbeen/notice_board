@@ -1,4 +1,4 @@
-package org.example.securityapp.user.service;
+package org.example.securityapp.security.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

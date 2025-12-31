@@ -1,6 +1,6 @@
 package org.example.securityapp.config;
 
-import org.example.securityapp.common.config.RedisConfig;
+import org.example.securityapp.security.config.RedisConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

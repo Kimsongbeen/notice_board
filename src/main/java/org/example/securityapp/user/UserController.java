@@ -1,4 +1,4 @@
-package org.example.securityapp.user.controller;
+package org.example.securityapp.user;
 
 import org.example.securityapp.security.principal.CustomUserDetails;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

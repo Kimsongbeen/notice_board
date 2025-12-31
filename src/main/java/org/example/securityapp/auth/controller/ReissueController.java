@@ -1,8 +1,7 @@
-package org.example.securityapp.user.controller;
+package org.example.securityapp.auth.controller;
 
-import org.apache.coyote.Response;
-import org.example.securityapp.auth.JwtProvider;
-import org.example.securityapp.user.service.RefreshTokenService;
+import org.example.securityapp.security.jwt.JwtProvider;
+import org.example.securityapp.auth.service.RefreshTokenService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package org.example.securityapp.auth;
+package org.example.securityapp.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

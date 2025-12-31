@@ -1,7 +1,7 @@
-package org.example.securityapp.user.controller;
+package org.example.securityapp.auth.controller;
 
-import org.example.securityapp.auth.JwtProvider;
-import org.example.securityapp.user.service.RefreshTokenService;
+import org.example.securityapp.security.jwt.JwtProvider;
+import org.example.securityapp.auth.service.RefreshTokenService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;

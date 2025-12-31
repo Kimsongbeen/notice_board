@@ -1,9 +1,9 @@
-package org.example.securityapp.common.config;
+package org.example.securityapp.security.config;
 
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.securityapp.auth.JwtProvider;
+import org.example.securityapp.security.jwt.JwtProvider;
 import org.example.securityapp.security.auth.CustomAuthenticationProvider;
-import org.example.securityapp.security.auth.JwtAuthenticationFilter;
+import org.example.securityapp.security.jwt.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

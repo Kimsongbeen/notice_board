@@ -1,4 +1,4 @@
-package org.example.securityapp.user.service;
+package org.example.securityapp.auth.service;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,6 @@
 package org.example.securityapp.security.auth;
 
-import lombok.RequiredArgsConstructor;
-import org.example.securityapp.user.service.LoginFailService;
+import org.example.securityapp.security.service.LoginFailService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;

@@ -1,6 +1,6 @@
 package org.example.securityapp.service;
 
-import org.example.securityapp.user.service.RefreshTokenService;
+import org.example.securityapp.auth.service.RefreshTokenService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

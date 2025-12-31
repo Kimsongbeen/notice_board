@@ -1,4 +1,4 @@
-package org.example.securityapp.user.controller;
+package org.example.securityapp.admin;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

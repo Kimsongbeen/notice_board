@@ -1,8 +1,8 @@
-package org.example.securityapp.user.controller;
+package org.example.securityapp.auth.controller;
 
-import org.example.securityapp.auth.JwtProvider;
 import org.example.securityapp.auth.LoginRequest;
 import org.example.securityapp.auth.LoginResponse;
+import org.example.securityapp.security.jwt.JwtProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
