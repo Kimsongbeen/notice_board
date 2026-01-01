@@ -1,18 +1,26 @@
 package org.example.securityapp.user;
 
-import org.example.securityapp.security.principal.CustomUserDetails;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.example.securityapp.auth.LoginRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController
 {
-    @GetMapping("/me")
-    public String me(@AuthenticationPrincipal CustomUserDetails userDetails)
-    {
-        return userDetails.getUsername();
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @PostMapping
+    public ResponseEntity<?> register(@RequestBody LoginRequest request){
+        Long userId = userService.register(
+                request.getEmail(),
+                request.getPassword()
+        );
+        return ResponseEntity.ok(userId);
     }
 }

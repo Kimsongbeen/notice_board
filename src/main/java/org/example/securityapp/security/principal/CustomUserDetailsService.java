@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         log.info("loadUserByUsername 호출됨: {}", username);
 
-        User user = userRepository.findByUsername(username)
+        User user = userRepository.findByEmail(username)
                 .orElseThrow(()->
                         new UsernameNotFoundException("User not found"));
 

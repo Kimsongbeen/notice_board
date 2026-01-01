@@ -17,7 +17,7 @@ public class LoginFailService {
 
     @Transactional
     public void handleFail(String username){
-        userRepository.findByUsername(username)
+        userRepository.findByEmail(username)
                 .ifPresent(user -> {
                     user.increaseFailCount();
 
@@ -28,7 +28,7 @@ public class LoginFailService {
     }
 
     public void handleSuccess(String username){
-        userRepository.findByUsername(username)
+        userRepository.findByEmail(username)
                 .ifPresent(User::resetFailCount);
     }
 }
